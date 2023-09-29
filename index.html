@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Length Converter</h1>
+        <label for="length">Enter Length (in meters):</label>
+        <input type="number" id="length" step="0.01" placeholder="Enter length in meters">
+        <br><br>
+        <label for="unit">Select Unit:</label>
+        <select id="unit">
+            <option value="centimeters">Centimeters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="millimeters">Millimeters</option>
+        </select>
+        <br><br>
+        <button onclick="convertLength()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertLength() {
+            const inputLength = parseFloat(document.getElementById("length").value);
+            const selectedUnit = document.getElementById("unit").value;
+            let convertedLength;
+
+            if (selectedUnit === "centimeters") {
+                convertedLength = inputLength * 100;
+            } else if (selectedUnit === "kilometers") {
+                convertedLength = inputLength / 1000;
+            } else if (selectedUnit === "millimeters") {
+                convertedLength = inputLength * 1000;
+            }
+
+            document.getElementById("result").innerText = `Converted Length: ${convertedLength} ${selectedUnit}`;
+        }
+    </script>
+</body>
+</html>
